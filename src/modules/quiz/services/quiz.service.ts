@@ -311,4 +311,48 @@ export class QuizService {
   listChallenges(userId: number) {
     return challenges.filter(c=>c.creatorId===userId || c.opponentId===userId);
   }
+
+  // Admin import from JSON
+  async importFromJson(payload: any) {
+    // payload: { categories?: [{name,colorHex}], questions?: [{categoryName|categoryId, questionText, timerSeconds?, answers:[{text,isCorrect}]}] }
+    try {
+      // categories
+      if (Array.isArray(payload?.categories)) {
+        for (const c of payload.categories) {
+          if (!c?.name || !c?.colorHex) continue;
+          await this.prisma.quizCategory.upsert({
+            where: { name: c.name },
+            update: { colorHex: c.colorHex },
+            create: { name: c.name, colorHex: c.colorHex },
+          });
+        }
+      }
+      // map categories
+      const catList = await this.prisma.quizCategory.findMany();
+      const nameToId = new Map(catList.map(c=>[c.name, c.id] as const));
+
+      // questions
+      let created = 0;
+      if (Array.isArray(payload?.questions)) {
+        for (const q of payload.questions) {
+          const categoryId = q.categoryId || nameToId.get(q.categoryName);
+          if (!categoryId || !q?.questionText || !Array.isArray(q?.answers) || q.answers.length === 0) continue;
+          const createdQ = await this.prisma.quizQuestion.create({
+            data: {
+              categoryId,
+              questionText: q.questionText,
+              timerSeconds: q.timerSeconds ?? 20,
+              answers: {
+                create: q.answers.map((a:any)=>({ answerText: a.text, isCorrect: !!a.isCorrect }))
+              }
+            }
+          });
+          if (createdQ) created++;
+        }
+      }
+      return { success: true, createdQuestions: created };
+    } catch (e:any) {
+      return { success: false, message: e?.message || 'Import failed' };
+    }
+  }
 }

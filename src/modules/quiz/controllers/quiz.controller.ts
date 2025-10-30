@@ -146,6 +146,12 @@ export class QuizController {
     return this.quiz.finishChallenge(Number(id));
   }
 
+  // Admin import (JSON)
+  @Post('admin/import')
+  adminImport(@Body() body: any) {
+    return this.quiz.importFromJson(body);
+  }
+
   @Get('friends')
   listFriendsApi(@Req() req) {
     const token = (req.headers['authorization'] || '').toString().replace('Bearer ', '');
