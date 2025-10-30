@@ -9,7 +9,7 @@ generator client {
 
 model QuizCategory {
   id        Int     @id @default(autoincrement())
-  name      String
+  name      String  @unique
   colorHex  String
   questions QuizQuestion[]
 }
