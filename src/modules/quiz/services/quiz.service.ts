@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { QuizQuestion } from '../entities/question.entity';
 import { QuizAnswer } from '../entities/answer.entity';
 import { QuizCategory } from '../entities/category.entity';
+import { PrismaService } from './prisma.service';
 
 const categories: QuizCategory[] = [
   { id: 1, name: 'Storia', colorHex: '#ffe28a' },
@@ -78,9 +79,42 @@ let challengeId = 1;
 
 @Injectable()
 export class QuizService {
-  getCategories() { return categories; }
+  constructor(private readonly prisma: PrismaService) {}
 
-  getRandomQuestion(catId?: number, excludeIds: number[] = [], difficulty: 'easy'|'medium'|'hard' = 'medium') {
+  async getCategories() {
+    try {
+      const dbCats = await this.prisma.quizCategory.findMany();
+      if (dbCats && dbCats.length > 0) {
+        return dbCats.map(c => ({ id: c.id, name: c.name, colorHex: c.colorHex }));
+      }
+    } catch {}
+    return categories;
+  }
+
+  async getRandomQuestion(catId?: number, excludeIds: number[] = [], difficulty: 'easy'|'medium'|'hard' = 'medium') {
+    // prova DB
+    try {
+      const where: any = {};
+      if (catId) where.categoryId = catId;
+      if (excludeIds && excludeIds.length) where.id = { notIn: excludeIds };
+      const count = await this.prisma.quizQuestion.count({ where });
+      if (count > 0) {
+        const skip = Math.floor(Math.random() * count);
+        const q = await this.prisma.quizQuestion.findFirst({ where, skip, take: 1, include: { answers: true } });
+        if (q) {
+          const timers = { easy: 30, medium: 20, hard: 12 } as const;
+          return {
+            id: q.id,
+            categoryId: q.categoryId,
+            questionText: q.questionText,
+            timerSeconds: timers[difficulty] ?? q.timerSeconds,
+            answers: q.answers.map(a => ({ id: a.id, answerText: a.answerText }))
+          };
+        }
+      }
+    } catch {}
+
+    // fallback MOCK
     let qs = catId ? questions.filter(q=>q.categoryId===catId) : questions;
     if (excludeIds.length) {
       const excl = new Set(excludeIds);
@@ -100,7 +134,32 @@ export class QuizService {
     };
   }
 
-  getDailyQuestion(catId?: number, excludeIds: number[] = [], difficulty: 'easy'|'medium'|'hard' = 'medium') {
+  async getDailyQuestion(catId?: number, excludeIds: number[] = [], difficulty: 'easy'|'medium'|'hard' = 'medium') {
+    // Per semplicità usiamo comunque la logica deterministica sul set DB se presente
+    try {
+      const where: any = {};
+      if (catId) where.categoryId = catId;
+      if (excludeIds && excludeIds.length) where.id = { notIn: excludeIds };
+      const list = await this.prisma.quizQuestion.findMany({ where, include: { answers: true } });
+      if (list.length > 0) {
+        const daySeed = Math.floor(Date.now() / (24*60*60*1000));
+        const ordered = list
+          .map(q => ({ q, key: (q.id + daySeed) % 9973 }))
+          .sort((a,b)=>a.key-b.key)
+          .map(x=>x.q);
+        const q = ordered[0];
+        const timers = { easy: 30, medium: 20, hard: 12 } as const;
+        return {
+          id: q.id,
+          categoryId: q.categoryId,
+          questionText: q.questionText,
+          timerSeconds: timers[difficulty] ?? q.timerSeconds,
+          answers: q.answers.map(a => ({ id: a.id, answerText: a.answerText }))
+        };
+      }
+    } catch {}
+
+    // fallback MOCK
     const daySeed = Math.floor(Date.now() / (24*60*60*1000));
     let qs = catId ? questions.filter(q=>q.categoryId===catId) : questions;
     if (excludeIds.length) {
@@ -108,7 +167,6 @@ export class QuizService {
       qs = qs.filter(q => !excl.has(q.id));
     }
     if (qs.length === 0) return null;
-    // ordine deterministico per giorno: sort by (id + seed) mod N
     qs = qs
       .map(q => ({ q, key: (q.id + daySeed) % 9973 }))
       .sort((a,b)=>a.key-b.key)
@@ -189,7 +247,7 @@ export class QuizService {
     // streak semplice: risposte corrette consecutive adesso
     let streak = 0;
     for (let i = evs.length-1; i>=0; i--) {
-      if (evs[i].correct && evs[i].delta>0) streak++; else break;
+      if (evs[i].correct && e delta>0) streak++; else break;
     }
     const perCat = this.getCategoryStats(userId);
     const masters = perCat.filter(c=>c.total>=50 && c.percent>=70).map(c=>`Maestro ${c.name}`);

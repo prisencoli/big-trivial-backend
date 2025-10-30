@@ -1,0 +1,69 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model QuizCategory {
+  id        Int     @id @default(autoincrement())
+  name      String
+  colorHex  String
+  questions QuizQuestion[]
+}
+
+model QuizQuestion {
+  id          Int           @id @default(autoincrement())
+  categoryId  Int
+  questionText String
+  timerSeconds Int          @default(20)
+  category    QuizCategory  @relation(fields: [categoryId], references: [id])
+  answers     QuizAnswer[]
+}
+
+model QuizAnswer {
+  id         Int    @id @default(autoincrement())
+  questionId Int
+  answerText String
+  isCorrect  Boolean @default(false)
+  question   QuizQuestion @relation(fields: [questionId], references: [id])
+}
+
+model QuizUserPoints {
+  id       Int   @id @default(autoincrement())
+  userId   Int
+  score    Int   @default(0)
+  lastPlayed DateTime @default(now())
+}
+
+model QuizAnswerEvent {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  questionId Int
+  correct    Boolean
+  delta      Int
+  at         DateTime @default(now())
+  categoryId Int
+}
+
+model Friend {
+  id       Int @id @default(autoincrement())
+  userId   Int
+  friendId Int
+}
+
+model Challenge {
+  id          Int     @id @default(autoincrement())
+  creatorId   Int
+  opponentId  Int
+  categoryId  Int?
+  difficulty  String
+  seed        Int
+  status      String
+  createdAt   DateTime @default(now())
+  startedAt   DateTime?
+  finishedAt  DateTime?
+  // scores in tabella eventi o in JSON altrove, qui teniamo semplice
+}
