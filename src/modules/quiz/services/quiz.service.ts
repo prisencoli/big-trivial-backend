@@ -247,7 +247,7 @@ export class QuizService {
     // streak semplice: risposte corrette consecutive adesso
     let streak = 0;
     for (let i = evs.length-1; i>=0; i--) {
-      if (evs[i].correct && e delta>0) streak++; else break;
+      if (evs[i].correct && evs[i].delta>0) streak++; else break;
     }
     const perCat = this.getCategoryStats(userId);
     const masters = perCat.filter(c=>c.total>=50 && c.percent>=70).map(c=>`Maestro ${c.name}`);
