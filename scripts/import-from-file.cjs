@@ -117,11 +117,51 @@ function loadQuestions(filePath) {
     process.exit(1);
   }
 
-  for (let i = 0; i < questions.length; i += BATCH_SIZE) {
-    const batch = questions.slice(i, i + BATCH_SIZE);
+  // Raccogli categorie uniche dalle domande (primo batch)
+  const categoryNames = [...new Set(questions.map(q => q.categoryName).filter(Boolean))];
+  const categories = categoryNames.map(name => {
+    // Colori predefiniti per categorie note
+    const colors = {
+      'The Simpsons': '#f5e25b',
+      'Storia': '#ffe28a',
+      'Geografia': '#8be2ff',
+      'Scienza': '#aaffbe',
+      'Arte': '#ff9ad2',
+      'Sport': '#f68e8e',
+      'Spettacolo': '#bfa6ff'
+    };
+    return { name, colorHex: colors[name] || '#cccccc' };
+  });
+  console.log(`Categorie trovate: ${categoryNames.join(', ')}`);
+
+  // Prima crea le categorie (se non esistono già)
+  if (categories.length > 0) {
+    const catRes = await postJson(`${API_BASE}/quiz/admin/import`, { categories, questions: [] });
+    console.log(`Categorie create/aggiornate:`, catRes);
+  }
+
+  // Funzione per randomizzare l'ordine delle risposte (Fisher-Yates shuffle)
+  function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
+  // Randomizza l'ordine delle risposte per ogni domanda prima di importare
+  const shuffledQuestions = questions.map(q => ({
+    ...q,
+    answers: shuffleArray(q.answers)
+  }));
+
+  // Poi importa le domande in batch
+  for (let i = 0; i < shuffledQuestions.length; i += BATCH_SIZE) {
+    const batch = shuffledQuestions.slice(i, i + BATCH_SIZE);
     const body = { categories: [], questions: batch };
     const res = await postJson(`${API_BASE}/quiz/admin/import`, body);
-    console.log(`Batch ${i + 1}-${Math.min(i + BATCH_SIZE, questions.length)} →`, res);
+    console.log(`Batch ${i + 1}-${Math.min(i + BATCH_SIZE, shuffledQuestions.length)} →`, res);
   }
   console.log('Import completato');
 })().catch(err => { console.error(err); process.exit(1); });

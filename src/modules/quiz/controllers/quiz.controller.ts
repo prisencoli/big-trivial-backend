@@ -44,12 +44,12 @@ export class QuizController {
   }
 
   @Post('answer')
-  checkAnswer(@Req() req, @Body() body: { questionId:number, answerId: number, difficulty?: string }) {
+  async checkAnswer(@Req() req, @Body() body: { questionId:number, answerId: number, difficulty?: string }) {
     const authHeader = req.headers['authorization'] as string | undefined;
     const token = (authHeader || '').replace('Bearer ', '');
     const userId = this.auth.getUserIdFromToken(token) || 1;
-    const ok = this.quiz.checkAnswer(body.questionId, body.answerId);
-    this.quiz.updateCategoryStats(userId, body.questionId, ok);
+    const ok = await this.quiz.checkAnswer(body.questionId, body.answerId);
+    await this.quiz.updateCategoryStats(userId, body.questionId, ok);
     if (ok) {
       const d = (body.difficulty || 'medium').toLowerCase();
       const delta = d === 'hard' ? 3 : d === 'easy' ? 1 : 2;
@@ -69,7 +69,7 @@ export class QuizController {
   }
 
   @Get('stats')
-  getStats(@Req() req) {
+  async getStats(@Req() req) {
     const authHeader = req.headers['authorization'] as string | undefined;
     const token = (authHeader || '').replace('Bearer ', '');
     const userId = this.auth.getUserIdFromToken(token) || 1;
@@ -91,7 +91,7 @@ export class QuizController {
   }
 
   @Get('achievements')
-  getAchievements(@Req() req) {
+  async getAchievements(@Req() req) {
     const authHeader = req.headers['authorization'] as string | undefined;
     const token = (authHeader || '').replace('Bearer ', '');
     const userId = this.auth.getUserIdFromToken(token) || 1;

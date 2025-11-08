@@ -103,12 +103,14 @@ export class QuizService {
         const q = await this.prisma.quizQuestion.findFirst({ where, skip, take: 1, include: { answers: true } });
         if (q) {
           const timers = { easy: 30, medium: 20, hard: 12 } as const;
+          // Randomizza l'ordine delle risposte per evitare che la corretta sia sempre prima
+          const shuffled = [...q.answers].sort(() => Math.random() - 0.5);
           return {
             id: q.id,
             categoryId: q.categoryId,
             questionText: q.questionText,
             timerSeconds: timers[difficulty] ?? q.timerSeconds,
-            answers: q.answers.map(a => ({ id: a.id, answerText: a.answerText }))
+            answers: shuffled.map(a => ({ id: a.id, answerText: a.answerText }))
           };
         }
       }
@@ -149,12 +151,14 @@ export class QuizService {
           .map(x=>x.q);
         const q = ordered[0];
         const timers = { easy: 30, medium: 20, hard: 12 } as const;
+        // Randomizza l'ordine delle risposte per evitare che la corretta sia sempre prima
+        const shuffled = [...q.answers].sort(() => Math.random() - 0.5);
         return {
           id: q.id,
           categoryId: q.categoryId,
           questionText: q.questionText,
           timerSeconds: timers[difficulty] ?? q.timerSeconds,
-          answers: q.answers.map(a => ({ id: a.id, answerText: a.answerText }))
+          answers: shuffled.map(a => ({ id: a.id, answerText: a.answerText }))
         };
       }
     } catch {}
@@ -181,7 +185,18 @@ export class QuizService {
     };
   }
 
-  checkAnswer(questionId: number, answerId: number) {
+  async checkAnswer(questionId: number, answerId: number) {
+    // Prova prima dal database
+    try {
+      const answer = await this.prisma.quizAnswer.findFirst({
+        where: { id: answerId, questionId: questionId }
+      });
+      if (answer) {
+        return answer.isCorrect;
+      }
+    } catch {}
+    
+    // Fallback al mock
     return answers.find(a=>a.questionId===questionId && a.id===answerId)?.isCorrect ?? false;
   }
 
@@ -199,19 +214,45 @@ export class QuizService {
   }
 
   // Tracking per categoria
-  updateCategoryStats(userId: number, questionId: number, correct: boolean) {
-    const q = questions.find(q => q.id === questionId);
-    if (!q) return;
+  async updateCategoryStats(userId: number, questionId: number, correct: boolean) {
+    // Prova prima dal database
+    let categoryId: number | undefined;
+    try {
+      const q = await this.prisma.quizQuestion.findUnique({
+        where: { id: questionId },
+        select: { categoryId: true }
+      });
+      if (q) categoryId = q.categoryId;
+    } catch {}
+    
+    // Fallback al mock
+    if (!categoryId) {
+      const q = questions.find(q => q.id === questionId);
+      if (!q) return;
+      categoryId = q.categoryId;
+    }
+    
     if (!userCategoryStats[userId]) userCategoryStats[userId] = {};
-    if (!userCategoryStats[userId][q.categoryId]) userCategoryStats[userId][q.categoryId] = { correct: 0, total: 0 };
-    const s = userCategoryStats[userId][q.categoryId];
+    if (!userCategoryStats[userId][categoryId]) userCategoryStats[userId][categoryId] = { correct: 0, total: 0 };
+    const s = userCategoryStats[userId][categoryId];
     s.total += 1;
     if (correct) s.correct += 1;
   }
 
-  getCategoryStats(userId: number) {
+  async getCategoryStats(userId: number) {
+    // Recupera le categorie dal database
+    let dbCategories: QuizCategory[] = [];
+    try {
+      dbCategories = await this.prisma.quizCategory.findMany();
+    } catch {}
+    
+    // Se non ci sono categorie nel DB, usa quelle hardcoded
+    const catsToUse = dbCategories.length > 0 
+      ? dbCategories.map(c => ({ id: c.id, name: c.name, colorHex: c.colorHex }))
+      : categories;
+    
     const perCat = userCategoryStats[userId] || {};
-    return categories.map(c => {
+    return catsToUse.map(c => {
       const s = perCat[c.id] || { correct: 0, total: 0 };
       const percent = s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0;
       return { categoryId: c.id, name: c.name, colorHex: c.colorHex, correct: s.correct, total: s.total, percent };
@@ -241,7 +282,7 @@ export class QuizService {
     return entries;
   }
 
-  getAchievements(userId: number) {
+  async getAchievements(userId: number) {
     const evs = scoreEvents.filter(e=>e.userId===userId).sort((a,b)=>a.at-b.at);
     const totalCorrect = evs.filter(e=>e.correct && e.delta>0).length;
     // streak semplice: risposte corrette consecutive adesso
@@ -249,7 +290,7 @@ export class QuizService {
     for (let i = evs.length-1; i>=0; i--) {
       if (evs[i].correct && evs[i].delta>0) streak++; else break;
     }
-    const perCat = this.getCategoryStats(userId);
+    const perCat = await this.getCategoryStats(userId);
     const masters = perCat.filter(c=>c.total>=50 && c.percent>=70).map(c=>`Maestro ${c.name}`);
     const badges: string[] = [];
     if (streak>=5) badges.push('Streak 5');

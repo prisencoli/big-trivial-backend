@@ -44,12 +44,12 @@ let QuizController = class QuizController {
         const difficulty = allowed.includes(d) ? d : 'medium';
         return this.quiz.getDailyQuestion(catId ? Number(catId) : undefined, excludeIds, difficulty);
     }
-    checkAnswer(req, body) {
+    async checkAnswer(req, body) {
         const authHeader = req.headers['authorization'];
         const token = (authHeader || '').replace('Bearer ', '');
         const userId = this.auth.getUserIdFromToken(token) || 1;
-        const ok = this.quiz.checkAnswer(body.questionId, body.answerId);
-        this.quiz.updateCategoryStats(userId, body.questionId, ok);
+        const ok = await this.quiz.checkAnswer(body.questionId, body.answerId);
+        await this.quiz.updateCategoryStats(userId, body.questionId, ok);
         if (ok) {
             const d = (body.difficulty || 'medium').toLowerCase();
             const delta = d === 'hard' ? 3 : d === 'easy' ? 1 : 2;
@@ -66,7 +66,7 @@ let QuizController = class QuizController {
         const userId = this.auth.getUserIdFromToken(token) || 1;
         return this.quiz.getScore(userId);
     }
-    getStats(req) {
+    async getStats(req) {
         const authHeader = req.headers['authorization'];
         const token = (authHeader || '').replace('Bearer ', '');
         const userId = this.auth.getUserIdFromToken(token) || 1;
@@ -84,7 +84,7 @@ let QuizController = class QuizController {
             return Object.assign(Object.assign({}, e), { username, avatar });
         });
     }
-    getAchievements(req) {
+    async getAchievements(req) {
         const authHeader = req.headers['authorization'];
         const token = (authHeader || '').replace('Bearer ', '');
         const userId = this.auth.getUserIdFromToken(token) || 1;
@@ -93,7 +93,16 @@ let QuizController = class QuizController {
     createChallenge(req, body) {
         const token = (req.headers['authorization'] || '').toString().replace('Bearer ', '');
         const userId = this.auth.getUserIdFromToken(token) || 1;
-        return this.quiz.createChallenge(userId, body.opponentId, body.categoryId, body.difficulty);
+        let opponentId = body.opponentId;
+        if (!opponentId && body.opponentUsername) {
+            const u = this.auth.getUserByUsername(body.opponentUsername);
+            if (!u)
+                return { success: false, message: 'Utente non trovato' };
+            opponentId = u.id;
+        }
+        if (!opponentId)
+            return { success: false, message: 'Specificare opponentUsername' };
+        return this.quiz.createChallenge(userId, opponentId, body.categoryId, body.difficulty);
     }
     listChallenges(req) {
         const token = (req.headers['authorization'] || '').toString().replace('Bearer ', '');
@@ -117,6 +126,19 @@ let QuizController = class QuizController {
     }
     finishChallenge(id) {
         return this.quiz.finishChallenge(Number(id));
+    }
+    adminImport(body) {
+        return this.quiz.importFromJson(body);
+    }
+    listFriendsApi(req) {
+        const token = (req.headers['authorization'] || '').toString().replace('Bearer ', '');
+        const userId = this.auth.getUserIdFromToken(token) || 1;
+        return this.auth.listFriends(userId);
+    }
+    addFriendApi(req, body) {
+        const token = (req.headers['authorization'] || '').toString().replace('Bearer ', '');
+        const userId = this.auth.getUserIdFromToken(token) || 1;
+        return this.auth.addFriend(userId, body.username);
     }
 };
 exports.QuizController = QuizController;
@@ -150,7 +172,7 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], QuizController.prototype, "checkAnswer", null);
 __decorate([
     (0, common_1.Get)('score'),
@@ -164,7 +186,7 @@ __decorate([
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], QuizController.prototype, "getStats", null);
 __decorate([
     (0, common_1.Get)('leaderboard'),
@@ -179,7 +201,7 @@ __decorate([
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], QuizController.prototype, "getAchievements", null);
 __decorate([
     (0, common_1.Post)('challenges'),
@@ -228,6 +250,28 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], QuizController.prototype, "finishChallenge", null);
+__decorate([
+    (0, common_1.Post)('admin/import'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], QuizController.prototype, "adminImport", null);
+__decorate([
+    (0, common_1.Get)('friends'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], QuizController.prototype, "listFriendsApi", null);
+__decorate([
+    (0, common_1.Post)('friends'),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], QuizController.prototype, "addFriendApi", null);
 exports.QuizController = QuizController = __decorate([
     (0, common_1.Controller)('quiz'),
     __metadata("design:paramtypes", [quiz_service_1.QuizService, auth_service_1.AuthService])

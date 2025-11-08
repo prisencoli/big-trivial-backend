@@ -1,0 +1,662 @@
+[
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il figlio di Ned Flanders?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Rod e Todd", "isCorrect": true },
+      { "text": "Bart", "isCorrect": false },
+      { "text": "Milhouse", "isCorrect": false },
+      { "text": "Ralph", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del dottore ciarlatano di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Dr. Nick Riviera", "isCorrect": true },
+      { "text": "Dr. Hibbert", "isCorrect": false },
+      { "text": "Dr. Marvin Monroe", "isCorrect": false },
+      { "text": "Dr. Egoyan", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è la moglie di Apu Nahasapeemapetilon?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Manjula", "isCorrect": true },
+      { "text": "Sanjay", "isCorrect": false },
+      { "text": "Priya", "isCorrect": false },
+      { "text": "Indira", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome della barca che Homer desidera acquistare?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "The Homer", "isCorrect": true },
+      { "text": "Sea Captain", "isCorrect": false },
+      { "text": "The Marge", "isCorrect": false },
+      { "text": "The Duff", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è l'attore decaduto che spesso appare in infomercial o film di serie B?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Troy McClure", "isCorrect": true },
+      { "text": "Ranier Wolfcastle", "isCorrect": false },
+      { "text": "Duffman", "isCorrect": false },
+      { "text": "Krusty il Clown", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome della squadra di baseball di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Springfield Isotopes", "isCorrect": true },
+      { "text": "Springfield Atoms", "isCorrect": false },
+      { "text": "Springfield Nuclear", "isCorrect": false },
+      { "text": "Springfield Buzzers", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il miglior amico di Homer alla centrale nucleare?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Barney Gumble", "isCorrect": false },
+      { "text": "Lenny Leonard", "isCorrect": false },
+      { "text": "Carl Carlson", "isCorrect": false },
+      { "text": "Lenny e Carl (entrambi stretti amici)", "isCorrect": true }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del ristorante di pesce preferito da Marge?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "The Frying Dutchman", "isCorrect": true },
+      { "text": "Luigi's", "isCorrect": false },
+      { "text": "El Chemistri", "isCorrect": false },
+      { "text": "Up, Up and Buffet", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il supereroe preferito di Bart Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Radioactive Man", "isCorrect": true },
+      { "text": "Bartman", "isCorrect": false },
+      { "text": "Stretch Dude", "isCorrect": false },
+      { "text": "Poochie", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del giornalista sportivo di Springfield, spesso di colore e con occhiali?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Kent Brockman", "isCorrect": false },
+      { "text": "Arnie Pye", "isCorrect": false },
+      { "text": "Dexter Colt", "isCorrect": false },
+      { "text": "Drederick Tatum", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il vecchio e burbero proprietario del negozio di esche di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Jasper Beardly", "isCorrect": false },
+      { "text": "Gil Gunderson", "isCorrect": false },
+      { "text": "Capitan McCallister", "isCorrect": true },
+      { "text": "Hans Moleman", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del camionista che spesso guida Homer?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Red Barclay", "isCorrect": true },
+      { "text": "Cletus Spuckler", "isCorrect": false },
+      { "text": "Brandine Spuckler", "isCorrect": false },
+      { "text": "Duffman", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il ricco e anziano fondatore di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Jebediah Springfield", "isCorrect": true },
+      { "text": "Zebediah Springfield", "isCorrect": false },
+      { "text": "Montgomery Burns", "isCorrect": false },
+      { "text": "Abraham Lincoln", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del bidello scozzese della scuola elementare di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Willie", "isCorrect": true },
+      { "text": "Groundskeeper Willy", "isCorrect": false },
+      { "text": "Sean", "isCorrect": false },
+      { "text": "Hamish", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è la moglie di Ned Flanders prima di Maude?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Nessuna, Maude è la sua prima moglie", "isCorrect": true },
+      { "text": "Edna Caprapall", "isCorrect": false },
+      { "text": "Helen Lovejoy", "isCorrect": false },
+      { "text": "Lindsey Naegle", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del papà di Milhouse?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Kirk Van Houten", "isCorrect": true },
+      { "text": "Luann Van Houten", "isCorrect": false },
+      { "text": "Milhouse Sr.", "isCorrect": false },
+      { "text": "Dwight Diddlehopper", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il bambino con gli occhiali che è il brontolone della classe di Bart?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Martin Prince", "isCorrect": true },
+      { "text": "Milhouse Van Houten", "isCorrect": false },
+      { "text": "Database", "isCorrect": false },
+      { "text": "Richard", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome dell'assistente di Krusty che lo sostituisce dopo la dipartita di Telespalla Bob?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Telespalla Mel", "isCorrect": true },
+      { "text": "Herschel Krustofsky Jr.", "isCorrect": false },
+      { "text": "Sideshow Luke", "isCorrect": false },
+      { "text": "Mr. Teeny", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il politico corrotto sindaco di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Joe Quimby", "isCorrect": true },
+      { "text": "Lenny Leonard", "isCorrect": false },
+      { "text": "Kang", "isCorrect": false },
+      { "text": "Kodos", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del nonno di Bart, Homer e Lisa?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Abraham 'Abe' Simpson", "isCorrect": true },
+      { "text": "Clancy Bouvier", "isCorrect": false },
+      { "text": "Virgil", "isCorrect": false },
+      { "text": "Cornelius Chapman", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il conduttore del telegiornale di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Kent Brockman", "isCorrect": true },
+      { "text": "Arnie Pye", "isCorrect": false },
+      { "text": "Scott Christian", "isCorrect": false },
+      { "text": "Birch Barlow", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del preside della scuola elementare di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Seymour Skinner", "isCorrect": true },
+      { "text": "Willie il giardiniere", "isCorrect": false },
+      { "text": "Otto Mann", "isCorrect": false },
+      { "text": "Dewey Largo", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è la madre di Ned Flanders?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Mona", "isCorrect": false },
+      { "text": "Maude", "isCorrect": false },
+      { "text": "Patty", "isCorrect": false },
+      { "text": "Nessuna delle precedenti (madre hippie)", "isCorrect": true }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del clown conduttore di un popolare show televisivo?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Krusty il Clown", "isCorrect": true },
+      { "text": "Telespalla Bob", "isCorrect": false },
+      { "text": "Telespalla Mel", "isCorrect": false },
+      { "text": "Capitan McCallister", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del criminale ex assistente di Krusty il Clown?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Telespalla Bob", "isCorrect": true },
+      { "text": "Telespalla Mel", "isCorrect": false },
+      { "text": "Il Serpente", "isCorrect": false },
+      { "text": "Tony Ciccione", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è la bevanda alcolica preferita di Homer?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Birra Duff", "isCorrect": true },
+      { "text": "Vino", "isCorrect": false },
+      { "text": "Whisky", "isCorrect": false },
+      { "text": "Flippola (Fudd)", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il capo della mafia di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Tony Ciccione", "isCorrect": true },
+      { "text": "Louie", "isCorrect": false },
+      { "text": "Johnny Labbra", "isCorrect": false },
+      { "text": "Il Serpente", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Come si chiama il giardiniere della scuola elementare di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Willie", "isCorrect": true },
+      { "text": "Groundskeeper Willy", "isCorrect": false },
+      { "text": "Monty", "isCorrect": false },
+      { "text": "Hans", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è l'autista dello scuolabus di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Otto Mann", "isCorrect": true },
+      { "text": "Barney Gumble", "isCorrect": false },
+      { "text": "Lenny Leonard", "isCorrect": false },
+      { "text": "Moe Szyslak", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome completo di Maggie Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Margaret 'Maggie' Simpson", "isCorrect": true },
+      { "text": "Magdalena Simpson", "isCorrect": false },
+      { "text": "Marge Jr. Simpson", "isCorrect": false },
+      { "text": "Madeline Simpson", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il reverendo di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Timothy Lovejoy", "isCorrect": true },
+      { "text": "Ned Flanders", "isCorrect": false },
+      { "text": "Padre Sean", "isCorrect": false },
+      { "text": "Reverendo H. Richard", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome dell'amica asiatica di Lisa Simpson, molto intelligente?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Allison Taylor", "isCorrect": true },
+      { "text": "Janey Powell", "isCorrect": false },
+      { "text": "Sherri", "isCorrect": false },
+      { "text": "Terri", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il grasso bambino che spesso ripete la frase 'Voglio i dolcetti!'?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Ralph Wiggum", "isCorrect": false },
+      { "text": "Nelson Muntz", "isCorrect": false },
+      { "text": "Database", "isCorrect": false },
+      { "text": "Milhouse Van Houten", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è la frase caratteristica di Nelson Muntz?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Ha-ha!", "isCorrect": true },
+      { "text": "Chissà?", "isCorrect": false },
+      { "text": "Ehi, amico!", "isCorrect": false },
+      { "text": "Bella!", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il professore della scuola elementare di Springfield, molto timido e goffo?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Professor Frink", "isCorrect": false },
+      { "text": "Seymour Skinner", "isCorrect": true },
+      { "text": "Dewey Largo", "isCorrect": false },
+      { "text": "Otto Mann", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Come si chiamano le due sorelle gemelle di Marge?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Patty e Selma Bouvier", "isCorrect": true },
+      { "text": "Sherri e Terri", "isCorrect": false },
+      { "text": "Brenda e Linda", "isCorrect": false },
+      { "text": "Betty e Wilma", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il medico di famiglia dei Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Dr. Hibbert", "isCorrect": true },
+      { "text": "Dr. Nick Riviera", "isCorrect": false },
+      { "text": "Dr. Marvin Monroe", "isCorrect": false },
+      { "text": "Dr. Julius", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del fiammante pub di Moe Szyslak?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Taverna di Boe", "isCorrect": true },
+      { "text": "Bar di Moe", "isCorrect": false },
+      { "text": "Duff Brewery", "isCorrect": false },
+      { "text": "La fossa dei lupi", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è l'annunciatore radiofonico di Springfield con una voce profonda?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Bill e Marty", "isCorrect": true },
+      { "text": "Kent Brockman", "isCorrect": false },
+      { "text": "Arnie Pye", "isCorrect": false },
+      { "text": "Troy McClure", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del fumettista proprietario del negozio di fumetti e carte collezionabili?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Jeff Albertson (l'Uomo dei fumetti)", "isCorrect": true },
+      { "text": "Comic Book Guy", "isCorrect": false },
+      { "text": "Matt Groening", "isCorrect": false },
+      { "text": "Stan Lee", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il padre di Bart Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Homer", "isCorrect": true },
+      { "text": "Ned", "isCorrect": false },
+      { "text": "Barney", "isCorrect": false },
+      { "text": "Moe", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome della moglie di Homer?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Marge", "isCorrect": true },
+      { "text": "Patty", "isCorrect": false },
+      { "text": "Selma", "isCorrect": false },
+      { "text": "Apu", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il lavoro di Homer Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Ispettore alla centrale nucleare", "isCorrect": true },
+      { "text": "Postino", "isCorrect": false },
+      { "text": "Poliziotto", "isCorrect": false },
+      { "text": "Insegnante", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del primogenito dei Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Bart", "isCorrect": true },
+      { "text": "Lisa", "isCorrect": false },
+      { "text": "Maggie", "isCorrect": false },
+      { "text": "Milhouse", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il colore dei capelli di Marge Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Blu", "isCorrect": true },
+      { "text": "Biondi", "isCorrect": false },
+      { "text": "Marroni", "isCorrect": false },
+      { "text": "Neri", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Come si chiama il barista preferito di Homer?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Boe Szyslak", "isCorrect": true },
+      { "text": "Carl Carlson", "isCorrect": false },
+      { "text": "Lenny Leonard", "isCorrect": false },
+      { "text": "Barney Gumble", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il dolce preferito di Homer?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Le ciambelle", "isCorrect": true },
+      { "text": "Le torte", "isCorrect": false },
+      { "text": "I biscotti", "isCorrect": false },
+      { "text": "Il gelato", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il migliore amico di Bart Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Milhouse Van Houten", "isCorrect": true },
+      { "text": "Nelson Muntz", "isCorrect": false },
+      { "text": "Ralph Wiggum", "isCorrect": false },
+      { "text": "Martin Prince", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome della figlia più intelligente della famiglia Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Lisa", "isCorrect": true },
+      { "text": "Maggie", "isCorrect": false },
+      { "text": "Patty", "isCorrect": false },
+      { "text": "Selma", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del cane dei Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Piccolo Aiutante di Babbo Natale", "isCorrect": true },
+      { "text": "Palla di Neve II", "isCorrect": false },
+      { "text": "Fido", "isCorrect": false },
+      { "text": "Lassie", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del gatto dei Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Palla di Neve II", "isCorrect": true },
+      { "text": "Piccolo Aiutante di Babbo Natale", "isCorrect": false },
+      { "text": "Felix", "isCorrect": false },
+      { "text": "Tom", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il vicino di casa molto religioso dei Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Ned Flanders", "isCorrect": true },
+      { "text": "Seymour Skinner", "isCorrect": false },
+      { "text": "Montgomery Burns", "isCorrect": false },
+      { "text": "Apu Nahasapeemapetilon", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del proprietario della centrale nucleare di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Montgomery Burns", "isCorrect": true },
+      { "text": "Waylon Smithers", "isCorrect": false },
+      { "text": "Kent Brockman", "isCorrect": false },
+      { "text": "Chief Wiggum", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è il braccio destro e segretario del signor Burns?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Waylon Smithers", "isCorrect": true },
+      { "text": "Carl Carlson", "isCorrect": false },
+      { "text": "Lenny Leonard", "isCorrect": false },
+      { "text": "Frank Grimes", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del commissario di polizia di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Clancy Wiggum", "isCorrect": true },
+      { "text": "Lou", "isCorrect": false },
+      { "text": "Eddie", "isCorrect": false },
+      { "text": "Joe Quimby", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è la frase celebre di Homer quando qualcosa va storto?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "D'oh!", "isCorrect": true },
+      { "text": "Woo Hoo!", "isCorrect": false },
+      { "text": "Mmm... ciambelle!", "isCorrect": false },
+      { "text": "Ay Caramba!", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Chi è l'insegnante di Bart Simpson alla scuola elementare di Springfield?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Edna Caprapall", "isCorrect": true },
+      { "text": "Elizabeth Hoover", "isCorrect": false },
+      { "text": "Seymour Skinner", "isCorrect": false },
+      { "text": "Agnes Skinner", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è lo strumento musicale che suona Lisa Simpson?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Sassofono", "isCorrect": true },
+      { "text": "Chitarra", "isCorrect": false },
+      { "text": "Pianoforte", "isCorrect": false },
+      { "text": "Flauto", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del proprietario del Jet Market (Kwik-E-Mart)?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Apu Nahasapeemapetilon", "isCorrect": true },
+      { "text": "Manjula Nahasapeemapetilon", "isCorrect": false },
+      { "text": "Sanjay Nahasapeemapetilon", "isCorrect": false },
+      { "text": "Kumail Nahasapeemapetilon", "isCorrect": false }
+    ]
+  },
+  {
+    "categoryName": "The Simpsons",
+    "questionText": "Qual è il nome del programma TV preferito da Bart e Lisa?",
+    "timerSeconds": 20,
+    "answers": [
+      { "text": "Grattachecca e Fichetto", "isCorrect": true },
+      { "text": "Lo show di Krusty il Clown", "isCorrect": false },
+      { "text": "Lo show di Troy McClure", "isCorrect": false },
+      { "text": "Le avventure di Radioactive Man", "isCorrect": false }
+    ]
+  }
+]

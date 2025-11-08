@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const users = [];
 let idCounter = 1;
 const sessions = {};
+const friends = {};
 function generateJwtMock(userId) {
     return 'mockedjwt.' + userId + '.' + Math.floor(Math.random() * 1000000);
 }
@@ -46,6 +47,27 @@ let AuthService = class AuthService {
     }
     getUserById(id) {
         return users.find(u => u.id === id);
+    }
+    getUserByUsername(username) {
+        return users.find(u => { var _a; return ((_a = u.username) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === username.toLowerCase(); });
+    }
+    addFriend(userId, friendUsername) {
+        const friend = this.getUserByUsername(friendUsername);
+        if (!friend)
+            return { success: false, message: 'Utente non trovato' };
+        if (friend.id === userId)
+            return { success: false, message: 'Non puoi aggiungere te stesso' };
+        friends[userId] = friends[userId] || [];
+        if (!friends[userId].includes(friend.id))
+            friends[userId].push(friend.id);
+        return { success: true };
+    }
+    listFriends(userId) {
+        const ids = friends[userId] || [];
+        return ids.map(id => {
+            const u = this.getUserById(id);
+            return u ? { id: u.id, username: u.username } : { id, username: `Utente #${id}` };
+        });
     }
 };
 exports.AuthService = AuthService;

@@ -6,19 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QuizModule = void 0;
+exports.PrismaService = void 0;
 const common_1 = require("@nestjs/common");
-const quiz_controller_1 = require("./controllers/quiz.controller");
-const quiz_service_1 = require("./services/quiz.service");
-const auth_service_1 = require("../auth/services/auth.service");
-const prisma_service_1 = require("./services/prisma.service");
-let QuizModule = class QuizModule {
+const client_1 = require("@prisma/client");
+let PrismaService = class PrismaService extends client_1.PrismaClient {
+    async onModuleInit() {
+        await this.$connect();
+    }
+    async onModuleDestroy() {
+        await this.$disconnect();
+    }
 };
-exports.QuizModule = QuizModule;
-exports.QuizModule = QuizModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [quiz_controller_1.QuizController],
-        providers: [quiz_service_1.QuizService, auth_service_1.AuthService, prisma_service_1.PrismaService],
-    })
-], QuizModule);
-//# sourceMappingURL=index.js.map
+exports.PrismaService = PrismaService;
+exports.PrismaService = PrismaService = __decorate([
+    (0, common_1.Injectable)()
+], PrismaService);
+//# sourceMappingURL=prisma.service.js.map
